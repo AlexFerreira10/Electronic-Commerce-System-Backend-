@@ -1,11 +1,11 @@
-package model.resource;
+package demo.resource;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.entities.User;
+import demo.model.entities.User;
 
 
 //Idicates that this class is a Rest controller
