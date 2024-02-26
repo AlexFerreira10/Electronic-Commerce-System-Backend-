@@ -13,21 +13,21 @@ import jakarta.persistence.Table;
 @Entity
 //Rename table because the word "user" is a reservation db word
 @Table(name = "tb_user")
-public class User implements Serializable{
-	
+public class User implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
-	//Mark the id
+
+	// Mark the id
 	@Id
-	//Increase the Id in bd
+	// Increase the Id in bd
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
 	private String phone;
 	private String password;
-	
-	//The default constructor is mandatory when using framework 
+
+	// The default constructor is mandatory when using framework
 	public User() {
 	}
 

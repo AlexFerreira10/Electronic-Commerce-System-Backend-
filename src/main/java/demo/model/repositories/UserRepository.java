@@ -6,5 +6,4 @@ import demo.model.entities.User;
 
 //Have default methods 
 public interface UserRepository extends JpaRepository<User,Long>{
-	
 }
