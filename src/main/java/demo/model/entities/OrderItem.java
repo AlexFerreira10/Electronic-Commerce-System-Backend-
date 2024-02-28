@@ -33,8 +33,8 @@ public class OrderItem implements Serializable {
 		this.quantify = quantify;
 		this.price = price;
 	}
-	
-	//Cicle reference
+
+	// Cicle reference
 	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
@@ -43,7 +43,7 @@ public class OrderItem implements Serializable {
 	public void setOrder(Order order) {
 		id.setOrder(order);
 	}
-	
+
 	public Product getProduct() {
 		return id.getProduct();
 	}
@@ -84,5 +84,9 @@ public class OrderItem implements Serializable {
 		OrderItem other = (OrderItem) obj;
 		return Objects.equals(id, other.id);
 	}
-
+	
+	//Java EE standard with "get" at the beginning
+	public Double getSubTotal() {
+		return quantify * price;
+	}
 }

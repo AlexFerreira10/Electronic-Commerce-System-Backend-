@@ -101,6 +101,11 @@ public class Order implements Serializable {
 	public Set<OrderItem> getItems() {
 		return items;
 	}
+	
+	//Java EE standard with "get" at the beginning
+	public Double getTotal() {
+		return items.stream().mapToDouble(x -> x.getSubTotal()).sum();
+	}
 
 	@Override
 	public int hashCode() {
