@@ -18,40 +18,40 @@ import jakarta.persistence.EntityNotFoundException;
 //@Component
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository repository;
-	
-	public List<User> findAll(){
+
+	public List<User> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
-	
+
 	public User insert(User obj) {
 		return repository.save(obj);
 	}
-	
+
 	public void delete(Long id) {
 		try {
 			repository.deleteById(id);
-		}catch(EmptyResultDataAccessException e) {
+		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
-		}catch(DataIntegrityViolationException e) {
+		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
-	
+
 	public User update(Long id, User obj) {
 		try {
-			//Nao vai no banco de dados, so monitora
+			// Does not go to the database, just monitors
 			User entity = repository.getReferenceById(id);
 			updateData(entity, obj);
 			return repository.save(entity);
-		}catch(EntityNotFoundException e){
+		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
 	}
